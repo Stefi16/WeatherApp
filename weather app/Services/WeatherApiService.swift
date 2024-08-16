@@ -13,6 +13,7 @@ protocol WeatherManagerDelegate {
 import Foundation
 
 struct WeatherApiService {
+    private let session = URLSession(configuration: .default)
     private let url = "https://api.open-meteo.com/v1/"
     
     var delegate: WeatherManagerDelegate?
@@ -24,7 +25,6 @@ struct WeatherApiService {
     }
     
     private func performRequest(with url: String) {
-        let session = URLSession(configuration: .default)
         
         let url = URL(string: url)
         
